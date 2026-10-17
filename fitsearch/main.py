@@ -227,7 +227,8 @@ async def admin_set_password(request: Request, user_id: int, password: str = For
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     principal = request_principal(request)
-    return templates.TemplateResponse(request, "index.html", {"engines": db.engines(),
+    return templates.TemplateResponse(request, "index.html", {"app_version": app.version,
+                                      "engines": db.engines(),
                                       "history_enabled": db.history_enabled(),
                                       "cache_enabled": db.cache_enabled(), "cache_ttl": db.cache_ttl(),
                                       "rss_max_mb": db.rss_max_mb(), "rss_item_limit": db.rss_item_limit(),

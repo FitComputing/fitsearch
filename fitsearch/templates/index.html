@@ -4,35 +4,8 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="FitSearch, métamoteur local et respectueux de vos choix">
   <title>FitSearch — cherchez moins, trouvez mieux</title>
-  <link rel="stylesheet" href="/static/style.css">
-  <link rel="stylesheet" href="/static/enhancements.css">
-  <link rel="stylesheet" href="/static/filters.css">
-  <link rel="stylesheet" href="/static/pagination.css">
-  <link rel="stylesheet" href="/static/scores.css">
-  <link rel="stylesheet" href="/static/operators.css">
-  <link rel="stylesheet" href="/static/cache.css">
-  <link rel="stylesheet" href="/static/favorites.css">
-  <link rel="stylesheet" href="/static/export.css">
-  <link rel="stylesheet" href="/static/saved-searches.css">
-  <link rel="stylesheet" href="/static/custom-feeds.css">
-  <link rel="stylesheet" href="/static/custom-sources.css">
-  <link rel="stylesheet" href="/static/site-analyzer.css">
-  <link rel="stylesheet" href="/static/site-analyzer-tuning.css">
-  <link rel="stylesheet" href="/static/custom-source-layout-fix.css">
-  <link rel="stylesheet" href="/static/rss-limits.css">
-  <link rel="stylesheet" href="/static/preview.css">
-  <link rel="stylesheet" href="/static/backup.css">
-  <link rel="stylesheet" href="/static/health.css">
-  <link rel="stylesheet" href="/static/inline-source-health.css">
-  <link rel="stylesheet" href="/static/theme-tuning.css">
-  <link rel="stylesheet" href="/static/preferences-hub.css">
-  <link rel="stylesheet" href="/static/update.css">
-  <link rel="stylesheet" href="/static/source-categories.css">
-  <link rel="stylesheet" href="/static/credentials.css">
-  <link rel="stylesheet" href="/static/content-types.css">
-  <link rel="stylesheet" href="/static/deployment.css">
-  <link rel="stylesheet" href="/static/translator.css">
-  <link rel="stylesheet" href="/static/auth.css">
+  {% set stylesheets = ['style.css', 'enhancements.css', 'filters.css', 'pagination.css', 'scores.css', 'operators.css', 'cache.css', 'favorites.css', 'export.css', 'saved-searches.css', 'custom-feeds.css', 'custom-sources.css', 'site-analyzer.css', 'site-analyzer-tuning.css', 'custom-source-layout-fix.css', 'rss-limits.css', 'preview.css', 'backup.css', 'health.css', 'inline-source-health.css', 'theme-tuning.css', 'preferences-hub.css', 'update.css', 'source-categories.css', 'credentials.css', 'content-types.css', 'deployment.css', 'translator.css', 'auth.css'] %}
+  {% for stylesheet in stylesheets %}<link rel="stylesheet" href="/static/{{ stylesheet }}?v={{ app_version }}">{% endfor %}
 </head>
 <body data-deployment-mode="{{ deployment.mode }}" data-auth-mode="{{ auth.mode }}"
       data-authenticated="{{ 'true' if auth.authenticated else 'false' }}" data-role="{{ auth.role if auth.mode == 'multiuser' else 'local' }}"
@@ -119,5 +92,5 @@
   <dialog id="authDialog" class="auth-dialog"><form id="loginForm"><button class="dialog-close" value="cancel" type="button" aria-label="Fermer">×</button><span class="eyebrow">COMPTE FITSEARCH</span><h2 id="authDialogTitle">Connexion</h2><div id="loginFields"><label>Identifiant<input id="loginUsername" name="username" autocomplete="username" maxlength="40" required></label><label>Mot de passe<input id="loginPassword" name="password" type="password" autocomplete="current-password" required></label><button type="submit">Se connecter</button></div><div id="accountFields"><p>Connecté avec <strong id="accountUsername">{{ auth.username }}</strong> · <span>{{ 'administrateur' if auth.administrator else 'utilisateur' }}</span></p><details><summary>Changer mon mot de passe</summary><label>Mot de passe actuel<input id="currentPassword" type="password" autocomplete="current-password"></label><label>Nouveau mot de passe<input id="newPassword" type="password" minlength="12" autocomplete="new-password"></label><button id="changeOwnPassword" type="button">Remplacer le mot de passe</button></details><button id="logoutBtn" type="button">Se déconnecter</button></div><p id="authMessage" aria-live="polite"></p></form></dialog>
   <dialog id="sourceAnalysisDialog" class="source-analysis-dialog"><form method="dialog"><button class="dialog-close" aria-label="Fermer">×</button><span class="eyebrow">ANALYSE DU SITE</span><h2 id="sourceAnalysisTitle">Résultat de l’analyse</h2><div id="sourceAnalysisContent"></div><div class="dialog-actions"><button value="cancel">Annuler</button><button id="applySourceAnalysis" type="button">Remplir automatiquement</button></div></form></dialog>
   <footer><span>FitSearch V2.17.6 · Libre, local, lisible</span><span>Installation utilisateur, système ou serveur · sans Docker</span></footer>
-  <script src="/static/app.js" defer></script>
+  <script src="/static/app.js?v={{ app_version }}" defer></script>
 </body></html>
