@@ -1,4 +1,4 @@
-# Déployer FitSearch V2.17.5 sous Linux
+# Déployer FitSearch V2.17.6 sous Linux
 
 ## Mode utilisateur
 

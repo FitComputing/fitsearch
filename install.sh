@@ -14,7 +14,7 @@ usage() {
 if [[ "$MODE" == "--help" || "$MODE" == "-h" ]]; then usage; exit 0; fi
 if [[ -z "$MODE" ]]; then
   if [[ -t 0 ]]; then
-    echo "Installation de FitSearch V2.17.5"
+    echo "Installation de FitSearch V2.17.6"
     echo "  1) Utilisateur local — réglages personnels, sans sudo"
     echo "  2) Système local — service commun à tous les comptes"
     echo "  3) Serveur — invités et comptes FitSearch séparés"
@@ -73,7 +73,7 @@ if [[ "$MODE" == "user" ]]; then
   else
     SERVICE_MESSAGE="Le service systemd utilisateur n’est pas disponible ; lancez $BIN_DIR/fitsearch."
   fi
-  echo "FitSearch V2.17.5 est installé pour l’utilisateur $USER."
+  echo "FitSearch V2.17.6 est installé pour l’utilisateur $USER."
   echo "$SERVICE_MESSAGE"
   echo "Adresse : http://127.0.0.1:8765"
   echo "Diagnostic : $SOURCE_DIR/fitsearch-doctor.sh user"
@@ -90,7 +90,7 @@ BASE_DIR="/opt/fitsearch"
 RELEASES_DIR="$BASE_DIR/releases"
 CURRENT_LINK="$BASE_DIR/current"
 LEGACY_DIR="$BASE_DIR/app"
-VERSION="2.17.5"
+VERSION="2.17.6"
 RELEASE_DIR="$RELEASES_DIR/$VERSION"
 BUILD_DIR="$RELEASES_DIR/.$VERSION.build.$$"
 NEXT_LINK="$BASE_DIR/.current.next.$$"
@@ -224,7 +224,7 @@ switched=0
 release_created=0
 trap - EXIT INT TERM
 
-echo "FitSearch V2.17.5 est installé en mode $MODE."
+echo "FitSearch V2.17.6 est installé en mode $MODE."
 echo "Version active : $(readlink -f "$CURRENT_LINK")"
 if [[ -n "$previous_target" ]]; then
   echo "Version précédente conservée : $previous_target"
