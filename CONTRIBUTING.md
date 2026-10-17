@@ -29,3 +29,25 @@ bash -n install.sh
 bash -n uninstall.sh
 bash -n fitsearch-doctor.sh
 git diff --check
+
+```
+
+## Commits
+
+- utilisez un message court décrivant clairement la modification ;
+- vérifiez les changements avant de valider ;
+- ne mélangez pas plusieurs sujets indépendants dans un même commit.
+
+## Pull Requests
+
+La Pull Request doit préciser :
+
+- le problème traité ;
+- la solution apportée ;
+- les contrôles effectués ;
+- les éventuelles conséquences sur l’installation ou la configuration.
+
+## Licence des contributions
+
+Toute contribution proposée à FitSearch est fournie sous la licence
+`AGPL-3.0-or-later`, conformément à la licence du projet.
