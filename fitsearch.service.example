@@ -1,0 +1,19 @@
+[Unit]
+Description=FitSearch — exemple de service utilisateur
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/fitsearch
+Restart=on-failure
+Environment=FITSEARCH_DATA=%h/.local/share/fitsearch
+Environment=FITSEARCH_MODE=user
+Environment=FITSEARCH_HOST=127.0.0.1
+Environment=FITSEARCH_PORT=8765
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,16 @@
+[Unit]
+Description=FitSearch — service utilisateur local
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=@ENVFILE@
+ExecStart=@EXEC@
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target

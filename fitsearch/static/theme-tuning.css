@@ -1,0 +1,6 @@
+/* Le thème clair sépare le vert de lecture, plus sombre, du vert de surface. */
+html[data-theme=light]{--accent:#34751b;--accent2:#70d34a}
+html[data-theme=light] .search-box button,
+html[data-theme=light] .brand-mark,
+html[data-theme=light] .brand small,
+html[data-theme=light] .credential-fields button{background:var(--accent2);color:#11170e}
