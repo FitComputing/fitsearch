@@ -211,7 +211,7 @@ Dans **Réglages → Sources de recherche → Loisirs & Jeux**, le lien Magic-Vi
 
 ## Rechercher dans Warhammer 40,000
 
-Dans **Réglages → Sources de recherche → Loisirs & Jeux**, choisissez d’abord la 10e édition, la 11e ou les deux. Dans les filtres avancés de la recherche, sélectionnez ensuite **OpenHammer · Warhammer 40K** pour les unités ou **Warhammer 40K Wiki** pour l’univers et son histoire.
+Dans **Réglages → Sources de recherche → Loisirs & Jeux**, activez **OpenHammer · Warhammer 40K** puis choisissez directement sur sa ligne la 10e édition, la 11e ou les deux. Dans les filtres avancés de la recherche, sélectionnez ensuite **OpenHammer · Warhammer 40K** pour les unités ou **Warhammer 40K Wiki** pour l’univers et son histoire.
 
 Une recherche `Terminator` dans OpenHammer présente les unités correspondantes avec leurs points, caractéristiques, armes, aptitudes, règles spéciales et mots-clés. Une recherche `Roboute Guilliman` dans le Wiki affiche les articles de lore avec une fiche de lecture illustrée. OpenHammer et le Wiki sont des sources communautaires non officielles : les règles, coûts et mises à jour d’équilibrage doivent être vérifiés via le raccourci **Warhammer Community** avant une partie ou un tournoi.
 
