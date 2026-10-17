@@ -57,7 +57,7 @@ profiles = ProfileStores(DATA, MULTIUSER)
 auth_db = AuthDB(DATA / "auth.db") if MULTIUSER else None
 db = DatabaseProxy(profiles)
 credential_store = CredentialProxy(profiles)
-app = FastAPI(title="FitSearch", version="2.17.6")
+app = FastAPI(title="FitSearch", version="2.17.7")
 app.mount("/static", StaticFiles(directory=BASE / "static"), name="static")
 templates = Jinja2Templates(directory=BASE / "templates")
 LOGIN_ATTEMPTS: dict[str, deque[float]] = defaultdict(deque)
@@ -283,7 +283,7 @@ async def search(q: str = "", category: str = "all", profile: str = "complete", 
     effective_domain = operators.site[:120] or domain[:120]
     custom_feeds = configured_custom_feeds(enabled_only=True)
     custom_sources = db.custom_sources(enabled_only=True)
-    cache_material = {"version": "2.17.6", "query": operators.query, "category": category, "profile": profile,
+    cache_material = {"version": "2.17.7", "query": operators.query, "category": category, "profile": profile,
         "latest": latest,
         "engines": db.engines(), "period": period, "language": language, "source": source,
         "domain": effective_domain, "fetch_limit": fetch_limit,
