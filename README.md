@@ -1,6 +1,131 @@
-# FitSearch V2.17.7
+# FitSearch
 
-Métamoteur local, léger et sans Docker, pensé pour Debian, Deepin et Arch Linux.
+**Un métamoteur de recherche libre, local et respectueux de vos données.**
+
+FitSearch interroge plusieurs moteurs, catalogues, encyclopédies et flux publics à partir d'une seule recherche. Il rassemble les réponses dans une interface unique, supprime les doublons et aide à comprendre le classement des résultats. Il fonctionne sur Linux sans Docker et peut être utilisé sur un ordinateur personnel comme sur un petit serveur.
+
+La version actuelle est **FitSearch 2.17.7**.
+
+## Pourquoi utiliser FitSearch ?
+
+- **Une seule recherche, plusieurs sources** : encyclopédies, publications scientifiques, actualités, livres, images, culture, technologie et sources spécialisées.
+- **Des résultats plus lisibles** : regroupement des doublons, filtres combinables, aperçu des pages et explication des scores.
+- **Une configuration maîtrisée** : chaque source peut être activée ou désactivée et certaines sources personnelles peuvent être ajoutées sans modifier le programme.
+- **Des données conservées localement** : préférences, favoris, recherches enregistrées et historique facultatif restent sur la machine.
+- **Aucune publicité ni télémétrie** : FitSearch ne construit pas de profil publicitaire et ne transmet les requêtes qu'aux sources activées.
+- **Plusieurs usages possibles** : installation personnelle, installation commune à un ordinateur ou déploiement multi-utilisateur derrière HTTPS.
+- **Une maintenance prudente** : sauvegarde locale, diagnostic des sources et mises à jour avec retour automatique à la version précédente en cas d'échec.
+
+## À qui s'adresse FitSearch ?
+
+FitSearch convient à toute personne souhaitant centraliser ses recherches sans confier ses préférences à une plateforme publicitaire. Il peut être installé sur un ordinateur Linux, un Raspberry Pi ou un serveur Debian. Aucune connaissance de Python n'est nécessaire pour l'installation guidée ci-dessous.
+
+## Installation facile pour débuter
+
+Cette procédure installe FitSearch uniquement pour votre compte Linux. Elle ne modifie pas les autres comptes de l'ordinateur et ne demande normalement pas de droits administrateur après l'installation des prérequis.
+
+### 1. Installer les outils nécessaires
+
+Sur Debian, Ubuntu, Linux Mint, Deepin ou Raspberry Pi OS, ouvrez l'application **Terminal**, copiez la commande suivante, puis appuyez sur **Entrée** :
+
+```bash
+sudo apt update
+sudo apt install python3 python3-venv python3-pip unzip curl
+```
+
+Saisissez le mot de passe de votre compte si le système le demande. Aucun caractère ne s'affiche pendant la saisie : c'est normal.
+
+Sur Arch Linux, utilisez plutôt :
+
+```bash
+sudo pacman -S python python-pip unzip curl
+```
+
+FitSearch nécessite **Python 3.10 ou une version plus récente**. Vous pouvez le vérifier avec :
+
+```bash
+python3 --version
+```
+
+### 2. Télécharger FitSearch
+
+1. Ouvrez la page [Releases de FitSearch](https://github.com/FitComputing/fitsearch/releases/latest).
+2. Dans la rubrique **Assets**, cliquez sur `FitSearch-2.17.7.zip`.
+3. Enregistrez le fichier dans votre dossier **Téléchargements**.
+4. Ouvrez le gestionnaire de fichiers, effectuez un clic droit sur l'archive et choisissez **Extraire ici**.
+
+Vous obtenez un dossier nommé `FitSearch-2.17.7`.
+
+### 3. Ouvrir un terminal dans le dossier extrait
+
+Dans le gestionnaire de fichiers, ouvrez le dossier `FitSearch-2.17.7`, effectuez un clic droit dans une zone vide et choisissez **Ouvrir dans un terminal**.
+
+Si cette option n'existe pas, utilisez les commandes suivantes en adaptant le nom du dossier si nécessaire :
+
+```bash
+cd ~/Téléchargements/FitSearch-2.17.7
+```
+
+Sur un système dont les dossiers portent des noms anglais, utilisez plutôt :
+
+```bash
+cd ~/Downloads/FitSearch-2.17.7
+```
+
+### 4. Lancer l'installation personnelle
+
+Dans ce terminal, exécutez :
+
+```bash
+chmod +x install.sh fitsearch-doctor.sh uninstall.sh
+./install.sh user
+```
+
+L'installateur crée un environnement Python isolé, installe FitSearch dans votre dossier personnel et démarre automatiquement son service. L'opération peut durer quelques minutes lors de la première installation.
+
+À la fin, le terminal doit notamment afficher :
+
+```text
+FitSearch V2.17.7 est installé pour l'utilisateur.
+Adresse : http://127.0.0.1:8765
+```
+
+### 5. Ouvrir FitSearch
+
+Ouvrez Firefox, Chromium ou votre navigateur habituel, puis saisissez cette adresse :
+
+<http://127.0.0.1:8765>
+
+Vous pouvez conserver cette page dans vos favoris. Le service redémarrera automatiquement lors de vos prochaines ouvertures de session.
+
+### 6. Vérifier l'installation en cas de difficulté
+
+Depuis le dossier extrait, lancez :
+
+```bash
+./fitsearch-doctor.sh user
+```
+
+Vous pouvez également vérifier le service avec :
+
+```bash
+systemctl --user status fitsearch --no-pager
+```
+
+Pour consulter les messages récents du service :
+
+```bash
+journalctl --user -u fitsearch --since "10 minutes ago" --no-pager
+```
+
+Pour arrêter ou redémarrer FitSearch :
+
+```bash
+systemctl --user stop fitsearch
+systemctl --user restart fitsearch
+```
+
+<!-- Historique détaillé des anciennes versions retiré de la présentation publique.
 
 La V1.2 ajoute des filtres combinables par période, langue, source et domaine. Le filtre de langue est transmis aux sources qui le prennent nativement en charge, notamment Wikipédia et Open Library. Le filtre de période conserve uniquement les résultats possédant une date vérifiable.
 
@@ -91,6 +216,8 @@ La V2.16.5 transforme Larousse en deux sources natives : **Larousse · Dictionna
 La V2.16.6 ajoute un assistant de traduction DeepL accessible à gauche du logo FitSearch. Il propose la détection automatique, le choix et l'inversion des langues, la copie, l'insertion dans le champ de recherche et le lancement direct. La clé DeepL est conservée dans le coffre local des identifiants et le texte n'est envoyé au service qu'au clic sur Traduire.
 
 La V2.17 ajoute le mode serveur multi-utilisateur. L’invité anonyme peut effectuer les recherches encyclopédiques prévues par FitSearch, mais ne peut rien enregistrer ni ajouter. Chaque utilisateur authentifié possède ses propres réglages, favoris, recherches enregistrées, flux RSS, sources et clés API. Les administrateurs gèrent les comptes sans inscription publique. Les sessions utilisent un cookie sécurisé, les mots de passe sont hachés avec Argon2 et les écritures sont protégées contre les requêtes intersites. La V2.17.1 garantit en plus que la racine contenant les profils est toujours privée (`0700`), indépendamment du masque de permissions de la session d’administration. La V2.17.2 remet en forme l’administration des comptes : séparation visuelle, champs libellés et encadrés, commandes cohérentes avec le thème et suppression de tout débordement horizontal du panneau. La V2.17.3 limite désormais cette administration à la seule rubrique « Système » des préférences. La V2.17.4 ajoute les mises à niveau atomiques pour les installations système et serveur : préparation isolée, bascule du lien `current`, contrôle de santé et retour automatique à la version précédente. La V2.17.5 regroupe le choix de l’édition Warhammer 40K avec la source OpenHammer correspondante afin de réunir son activation et son paramétrage au même endroit. La V2.17.6 corrige la présentation de ce réglage dans le panneau étroit : le toggle reste aligné avec la source et le sélecteur d’édition occupe une sous-carte pleine largeur sans chevauchement. La V2.17.7 versionne automatiquement les adresses des feuilles de style et du JavaScript afin que le navigateur charge les nouvelles ressources après une mise à jour, sans rechargement forcé manuel.
+
+-->
 
 ## Démarrage rapide
 
